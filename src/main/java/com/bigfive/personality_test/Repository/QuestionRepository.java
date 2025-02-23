@@ -28,6 +28,7 @@ public interface QuestionRepository extends JpaRepository<Question, Long> {
     void deleteQuestionById(@Param("id") int id);
     
 
+    // 当 nativeQuery = true 时，Spring Data JPA 允许你在 @Query 注解中直接编写 原生 SQL 语句，而不是使用 JPQL（Java Persistence Query Language）
     // 查询指定类别的随机问题
     @Query(value = "SELECT * FROM questions WHERE category = :category ORDER BY RAND() LIMIT :limit", nativeQuery = true)
     List<Question> findQuestionsByCategory(@Param("category") String category, @Param("limit") int limit);
@@ -39,4 +40,7 @@ public interface QuestionRepository extends JpaRepository<Question, Long> {
     // 查询子类别的问题
     @Query(value = "SELECT * FROM questions WHERE category = :category AND subCategory = :subCategory ORDER BY RAND() LIMIT 4", nativeQuery = true)
     List<Question> findQuestionsBySubCategory(@Param("category") String category, @Param("subCategory") String subCategory);
+
+    @Query(value = "SELECT COUNT(*) FROM questions WHERE subCategory = :subCategory", nativeQuery = true)
+    int findNumberOfQuestions(@Param("subCategory") String subCategory );
 }

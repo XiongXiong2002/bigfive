@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
+import com.bigfive.personality_test.DTO.DeleteInfo;
 import com.bigfive.personality_test.DTO.InputAdmin;
 import com.bigfive.personality_test.DTO.QuestionWithUserInfo;
 import com.bigfive.personality_test.Server.AdminService;
@@ -70,10 +71,10 @@ public class AdminController {
     }
 
     @PostMapping("/delete")
-    public ResponseEntity<Boolean> delete(@RequestBody int id) {
+    public ResponseEntity<Boolean> delete(@RequestBody DeleteInfo info) {
         try {
-            admins.deleteQuestion(id);
-            return ResponseEntity.ok(true);
+            boolean response = admins.deleteQuestion(info.getId(),info.getSubCategory());
+            return ResponseEntity.ok(response);
         } catch (Exception e) {
             throw new RuntimeException("删除失败：" + e.getMessage());
         }

@@ -53,8 +53,16 @@ public class AdminService {
     }
 
     @Transactional
-    public void deleteQuestion(int id){
-        questionRepository.deleteQuestionById(id);
+    public boolean deleteQuestion(int id,String subCategory){
+        int questionNumber = questionRepository.findNumberOfQuestions(subCategory);
+        if(questionNumber>10){
+            questionRepository.deleteQuestionById(id);
+            return true;
+        }else{
+            return false;
+        }
+
+       
 
     }
 
