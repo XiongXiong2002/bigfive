@@ -1,0 +1,107 @@
+body {
+    background-color: #615e5e;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url("../img/bg.png");
+    background-size: cover;
+    min-height: 100vh;
+}
+
+.app {
+    display: flex;
+    flex-direction: column;
+    width: 100vw; /* 让 .app 充满视口宽度 */
+    height: 100vh; /* 让 .app 充满视口高度 */
+}
+
+
+/* 标题样式 */
+.titleDesign {
+    background-color: #1E3A5F;
+    display: flex;
+    width: 100%;
+    min-height: 60px;
+    margin-bottom: 20px;
+    box-shadow: 0px 4px 10px 0px white;
+}
+
+.img1 {
+    margin-left: 10%;
+    width: 200px; /* 固定宽度 */
+    height: auto; /* 高度自适应 */
+    margin-top: auto;
+    margin-bottom: auto;
+    
+}
+
+.buttonContainer {
+    position: absolute;
+    left: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    gap: 10%; /* 按钮之间的间距 */
+}
+
+/* 按钮样式 */
+.backToMain{
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    font-size: clamp(12px, 1.5vw, 16px);
+    background-color: transparent;
+    border-radius: 30px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+   
+    transition: all 0.3s;
+}
+.backToMain:hover {
+    color: #007bff;
+}
+
+.login-container {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    margin-top: 10%;
+    margin-left: auto;
+    margin-right: auto;
+    
+    text-align: center;
+}
+
+input {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.inputs {
+    width: 100%;
+    padding: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.inputs:hover {
+    background-color: #218838;
+}
+
+.error {
+    color: red;
+    font-size: 14px;
+}

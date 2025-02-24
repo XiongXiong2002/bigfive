@@ -1,0 +1,108 @@
+body {
+    background-color: #615e5e;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* 标题样式 */
+.titleDesign {
+    display: flex;
+    align-items: center;
+    margin-left: 2%;
+    margin-top: 20px;
+
+}
+
+.img1 {
+    width: 300px; /* 固定宽度 */
+    height: auto; /* 高度自适应 */
+}
+
+/* 分割线 */
+.divider {
+    width: 96%;
+    height: 2px;
+    background-color: #ccc;
+    margin: 20px auto;
+}
+
+.resultTitle{
+    width: 100%;
+    padding-left: 20%;
+    color: white;
+}
+
+.resultContainer{
+    width: 100%;
+}
+
+.scoreContainer{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-bottom: 1%;
+}
+
+.personality{
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(20px, 2.5vw, 30px);
+    flex: 0 0 40%;
+    padding-left: 10%;
+    text-align: left;
+    color: white;
+
+}
+.percent{
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(20px, 2.5vw, 30px);
+    flex: 0 0 40%;
+    padding-right: 10%;
+    text-align: right;
+    color: white;
+
+}
+.resultBar {
+    background: rgba(255, 255, 255, 0.2); /* 半透明背景 */
+    margin-left: 10%;
+    height: 14px; /* 增加高度，避免过细 */
+    width: 80%;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: inset 0px 2px 5px rgba(0, 0, 0, 0.2); /* 添加内阴影增强立体感 */
+}
+
+.insideBar {
+    height: 100%;
+    min-height: 5px; /* 进度条最小高度，避免小数值不可见 */
+    background: linear-gradient(90deg, #00bfff, #0088ff); /* 添加渐变蓝色 */
+    border-radius: 12px;
+    transition: width 1s ease-in-out; /* 让进度条渐变增长,ease in out 指的是 先慢再块再慢*/
+
+}
+
+/* box-shadow: inset 0px 2px 5px rgba(0, 0, 0, 0.2);
+作用：添加内阴影。
+
+含义：
+
+inset 表示阴影在元素内部。
+
+0px 2px 5px 表示阴影的偏移（水平 0px，垂直 2px）和模糊半径（5px）。
+
+rgba(0, 0, 0, 0.2) 表示阴影颜色是黑色（0, 0, 0），透明度为 20%（0.2）。
+
+内阴影可以增强元素的立体感，使其看起来有凹陷或凸起的效果。 */
+
+
+.comment{
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(20px, 2.5vw, 15px);
+    color: white;
+    padding-left: 10%;
+
+}

@@ -1,0 +1,34 @@
+<html lang="en">
+    <head>
+        <title>Big Five personality test</title>
+        <meta charset="UTF-8">  <!-- 浏览器支持的编码格式 -->
+        <meta name="viewport" content="width = device-width, initial-scale = 1.0" >
+        <link rel="stylesheet" href="test.css"> 
+        <script src="https://unpkg.com/vue@3.2.0" ></script>
+    </head>
+    <body>
+        <div id="title" class="titleDesign" >
+            <img src="../img/MainLogo.png" alt="logo" class="img1">
+        </div>
+        <div class="QuestionContainer">
+            <h2 class="StepText">Step {{currentStep+1}}/{{allStep.length}}</h2>
+            <div class="QuestionBar">
+                <div class="insideBar":style="{width: ((currentStep+1)  / allStep.length * 100) + '%'}" ></div>
+            </div>
+            <div class="QuestionPart">
+                <h1 class="questionName"> {{currentQuestion.content}}</h1>
+                <!--vfor 是根据引锁index为每一个元素创建一个button,：key是每个元素的唯一标识符  -->
+                <button class="questionSelect" v-for="(option, index) in options" :key="index"@click="Choose(index)" :class="{ selected: answers[currentStep] === index }">
+                    <div class="choosencircle"></div>
+                    <p class="text">{{ option }}</p>
+                </button>
+                <button class="back" v-if="currentStep > 0" @click="goBack"><p class="perviousQuestion">previous question</p></button>
+            </div>
+            <div class="loading-overlay">
+                <p class="mention">In results analysis, it can take from one second to two minutes.</p>
+                <div class="spinner"></div>
+            </div>
+        </div>
+        <script type="module"  src="test.js"></script>
+    </body>
+</html>

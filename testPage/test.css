@@ -1,0 +1,253 @@
+/* 全局样式 */
+body {
+   
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-image: url("../img/bg.png");
+    background-size: cover;
+}
+/* 标题样式 */
+.titleDesign {
+    display: flex;
+    width: 100%;
+    min-height: 60px;
+    margin-bottom: 20px;
+    box-shadow: 0px 4px 10px 0px white;
+
+/* 
+   box-shadow 语法: offsetX offsetY blurRadius spreadRadius color;
+
+   解析:
+   - 0px   → 水平偏移量 (阴影不会向左或向右移动)
+   - 4px   → 垂直偏移量 (阴影向下偏移 4px)
+   - 10px  → 模糊半径 (阴影边缘柔和度，值越大越模糊)
+   - 0px   → 扩展半径 (不额外扩展或收缩阴影)
+   - rgba(255, 255, 255, 0.3) → 白色半透明阴影 (30% 透明度)
+
+   视觉效果:
+   - 阴影无水平偏移，仅向下 4px
+   - 模糊半径 10px 使阴影柔和扩散
+   - 透明白色阴影，适合暗色背景下的发光效果
+
+   适用场景:
+   - 适用于按钮、卡片或浮动 UI 元素，增加立体感
+   - 常用于暗色背景 UI 设计，制造发光感
+*/
+
+
+ /* 半透明白色阴影 */
+}
+
+.img1 {
+    margin-left: 10%;
+    width: 200px; /* 固定宽度 */
+    height: auto; /* 高度自适应 */
+    margin-top: auto;
+    margin-bottom: auto;
+    
+}
+
+.TopicContainer {
+    width: 100%;
+    font-family: 'Arial', sans-serif;
+    margin: 2%;
+    background-color: beige;
+}
+
+.StepText {
+    padding-left: 10%;
+    color: white;
+
+}
+
+.QuestionBar {
+    background: rgba(255, 255, 255, 0.2); 
+    box-shadow: inset 0px 2px 5px rgba(0, 0, 0, 0.2);
+    margin-left: 10%;
+    height: 2%;
+    width: 80%;
+    border-radius: 8px; /* 圆角效果 */
+}
+
+.QuestionPart {
+    animation: fade-in 0.3s ease-in forwards;
+}
+
+.QuestionPart.changing {
+    animation: fade-out 0.3s ease-out forwards; /* forwards 用来保证动画停留在结束阶段 */
+    opacity: 0; /* 逐渐透明 */
+}
+
+.insideBar {
+    height: 100%;
+    background:linear-gradient(90deg, #00bfff, #0088ff);
+    border-radius: 8px; /* 圆角效果 */
+    transition: all 0.3s;
+}
+
+.questionName {
+    text-align: center;
+    color: white;
+}
+
+.questionSelect {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 70%;
+    margin-left: 15%;
+    margin-bottom: 2%;
+    font-size: 20px;
+    background-color: rgba(255, 255, 255, 0.1); /* 半透明背景 */
+    border: 1px solid #ccc; /* 添加淡色边框 */
+    border-radius: 8px; /* 可选：圆角 */
+    padding: 10px 20px; /* 按钮的内边距 */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* 添加淡阴影 */
+    cursor: pointer; /* 鼠标变为点击手势 */
+    transition: all 0.3s ease; /* 增加平滑效果 */
+}
+
+.questionSelect:hover {
+    border-color: #aaa; /* 鼠标悬停时边框颜色变化 */
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2); /* 悬停时加强阴影效果 */
+    transform: scale(1.05); /* 鼠标悬停时放大 */
+}
+
+.questionSelect.selected {
+    background-color: #0000ff; /* 选中状态背景色 */
+    color: white; /* 选中文本颜色 */
+    border-color: #0000ff; /* 选中状态边框颜色 */
+    box-shadow: 2px 4px 10px rgba(0, 0, 255, 0.3); /* 选中状态的蓝色阴影 */
+}
+
+.questionSelect.selected .choosencircle {
+    background-color: white; /* 选中状态下的圆圈变为白色 */
+    border-color: #0000ff; /* 圆圈边框颜色 */
+}
+
+.choosencircle {
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 10px;
+    border: 1px solid #ccc; /* 添加淡色边框 */
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    transition: background-color 0.3s, border-color 0.3s; /* 圆圈颜色切换动画 */
+}
+
+.text {
+    margin: 0;
+    margin-left: 3%;
+    user-select: none; /* 现代浏览器 禁止选取*/
+    -webkit-user-select: none; /* Chrome/Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE/Edge */
+    color: white;
+    transition: color 0.3s; /* 文本颜色切换动画 */
+}
+
+.back{
+    background-color: lightgray;
+    text-align: center;
+    color:#615e5e ;
+    justify-content: flex-start;
+    width: 12%;
+    margin-left: 15%;
+    margin-bottom: 2%;
+    font-size: 20px;
+    border: 1px solid #ccc; /* 添加淡色边框 */
+    border-radius: 8px; /* 可选：圆角 */
+    padding: 10px 20px; /* 按钮的内边距 */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* 添加淡阴影 */
+    cursor: pointer; /* 鼠标变为点击手势 */
+    transition: all 0.3s ease;
+
+    padding: 0;
+
+}
+
+.back:hover {
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2); /* 悬停时加强阴影效果 */
+    transform: scale(1.1); /* 鼠标悬停时放大 */
+}
+
+.perviousQuestion{
+    -webkit-user-select: none; /* Chrome/Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE/Edge */
+
+}
+
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;  /* 让文字和动画垂直排列 */
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+}
+
+
+.loading-overlay.show {
+    visibility: visible;
+}
+
+
+.mention {
+    text-align: center;
+    color: white;
+    margin-bottom: 10px;  /* 让文字和动画之间有点间距 */
+    user-select: none; /* 现代浏览器 禁止选取*/
+    -webkit-user-select: none; /* Chrome/Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IEEdge */
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(255, 255, 255, 0.3);
+    border-top: 5px solid #ffffff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+
+@keyframes fade-in {
+    from {
+        opacity: 0; /* 初始状态：完全透明 */
+    }
+    to {
+        opacity: 1; /* 最终状态：完全可见 */
+    }
+}
+
+@keyframes fade-out {
+    from {
+        opacity: 1; /* 初始状态：完全可见 */
+    }
+    to {
+        opacity: 0; /* 最终状态：完全透明 */
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}

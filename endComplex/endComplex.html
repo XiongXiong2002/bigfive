@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Big Five Personality Test</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="endComplex.css"> 
+    <script src="https://unpkg.com/vue@3.2.0"></script>
+    <!-- 添加 jsPDF 和 html2canvas -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+</head>
+<body>
+    <!-- 标题部分 -->
+
+    <!-- Vue 挂载点 -->
+    <div id="app">
+        <div id="title" class="titleDesign">
+            <img src="../img/MainLogo.png" alt="logo" class="img1">
+        </div>
+        <div class="divider"></div>
+    
+        <h2 class="resultTitle">Personality Result</h2>
+
+        <div v-for="(trait, index) in results.traits" :key="index" class="traiteBlock">
+            <h3 class="traitScore">{{ trait.trait }}: {{ categoryScores[index].score }}/{{trait.Max_score}}</h3>
+            <div class="resultBar big">
+                <div class="insideBar" :style="{ width: (categoryScores[index].score)/(trait.Max_score)*100 + '%' }"></div>
+            </div>
+
+            <!-- 子维度 -->
+            <div v-for="aspect in trait.details" :key="aspect.aspect" class="aspectBlock">
+                <h4>{{ aspect.aspect }}: {{ aspect.score }}/20</h4>
+                <div class="resultBar small">
+                    <div class="insideBar" :style="{ width: (aspect.score * 5) + '%' }"></div>
+                </div>
+                <p class="aspectDescription">{{ aspect.description }}</p>
+            </div>
+        </div>
+        <div class="traiteBlock">
+            <h1>Summaries</h1>
+            <p class="summary">{{ results.summary }}</p>
+        </div>
+        <div class="buttonContainer">
+            <button class="back" @click ="goBack"> back to main  </button>
+        </div>       
+    </div>
+
+    <script src="endComplex.js"></script>
+</body>
+</html>

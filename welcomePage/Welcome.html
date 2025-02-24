@@ -1,0 +1,242 @@
+<html lang="en">
+    <head>
+        <title>Big Five personality test</title>
+        <meta charset="UTF-8">  <!-- 浏览器支持的编码格式 -->
+        <meta name="viewport" content="width = device-width, initial-scale = 1.0" >
+        <link rel="stylesheet" href="welcome.css"> 
+        <script src="https://unpkg.com/vue@3.2.0" ></script>
+        <!-- 引入 Swiper 脚本 -->
+        <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+        <!-- 引入swiper默认样式 -->
+        <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"><!-- 引入 Google Fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Nunito:wght@400;700&family=Rubik:wght@400;700&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <!-- 标题部分 -->
+        <nav id="title" class="titleDesign" >
+            <img src="../img/MainLogo.png" alt="logo" class="img1">
+            <div class="buttonContainer">
+              <button class="standardTest" onclick="testChosen(this)">Standard Test</button>
+              <button class="quickTest" onclick="testChosen(this)">Qucik Test</button>
+              <button class="backToMain" onclick="getToManager(this)">Manager Login</button>
+            </div>
+        </nav>
+
+        <!-- 轮回播放 -->
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide Openess" style="background-image: url(../img/Openness.png);background-size: cover;">
+                  <h1 class="Introduce">Openness</h1>
+                  <div class="textContainer">
+                    <p class="introduceText">
+                      Openness to Experience is a dimension of Big Five Personality Traits that is used to characterize individual differences in acceptance of new experiences, exploration of diversity, and interest in aesthetic and intellectual pursuits. Openness typically includes the following characteristics:
+
+                      1.Aesthetic Appreciation (Aesthetic Interest): sensitivity to art, beauty and music.
+
+                      2.Intellectual Curiosity: a desire to explore new ideas, knowledge, and theories, with a tendency to think logically and creatively.
+                      
+                      3.Imagination: Creative and imaginative, able to see the ordinary as new possibilities.
+
+                      4.Openness to Values: Acceptance of diverse cultural, religious, and ethical concepts.
+                    </p>
+                  </div>
+                </div>
+                <div class="swiper-slide Conscientiousness"style="background-image: url(../img/Conscientiousness.png);background-size: cover;">
+                    <h1 class="Introduce">Conscientiousness</h1>
+                    <div class="textContainer">
+                      <p class="introduceText">
+                        Conscientiousness is a dimension of the Big Five Personality Traits that characterizes individual differences in self-discipline, organization, and goal-oriented behavior. It typically includes the following characteristics:
+                        
+                        1.Self-Discipline: The ability to stay focused, resist distractions, and persevere in realizing goals.
+                        
+                        2.Orderliness: A preference for structure, planning, and maintaining an organized environment.
+                        
+                        3.Achievement Striving: A strong motivation to accomplish goals and perform at high standards.
+                        
+                        4.Cautiousness: A tendency to think carefully before acting, avoiding impulsive decisions
+                      </p>
+                    </div>
+                </div>
+                <div class="swiper-slide Extraversion" style="background-image: url(../img/Extraversion.png);background-size: cover;">
+                    <h1 class="Introduce">Extraversion</h1>
+                    <div class="textContainer">
+                      <p class="introduceText">
+                        Extraversion is a dimension of the Big Five Personality Traits that describes individual differences in sociability, energy levels, and the pursuit of stimulation in the company of others. It typically includes the following characteristics:
+  
+                        1.Sociability: Enjoyment of social interactions, gatherings, and building relationships.
+                        
+                        2.Assertiveness: Confidence in expressing opinions, taking initiative, and leading discussions.
+                        
+                        3.Energy Level: A natural tendency to be active, enthusiastic, and energetic.
+                        
+                        4.Positive Emotions: The frequent experience of joy, excitement, and optimism in social settings.                      
+                      </p>
+                    </div>
+                </div>
+                <div class="swiper-slide Agreeableness" style="background-image: url(../img/Agreeableness.png);background-size: cover;">
+                    <h1 class="Introduce" >Agreeableness </h1>
+                    <div class="textContainer">
+                      <p class="introduceText">
+                        Agreeableness is a dimension of the Big Five Personality Traits that highlights individual differences in compassion, cooperation, and the ability to maintain harmonious relationships. It typically includes the following characteristics:
+  
+                        1.Trust: A willingness to believe in the honesty and integrity of others.
+                        
+                        2.Altruism: A genuine concern for others' well-being and a desire to help them.
+                        
+                        3.Cooperation: A tendency to work collaboratively and resolve conflicts amicably.
+                        
+                        4.Empathy: Sensitivity to the feelings and perspectives of others.                      
+                      </p>
+                    </div>                  
+                </div>
+                <div class="swiper-slide Neuroticism"style="background-image: url(../img/Neuroticism.png);background-size: cover;">
+                  <h1 class="Introduce">Neuroticism</h1>
+                  <div class="textContainer">  
+                    <p class="introduceText">
+                      Neuroticism is a dimension of the Big Five Personality Traits that characterizes individual differences in emotional stability and susceptibility to negative emotions. It typically includes the following characteristics:
+
+                      1.Emotional Instability: Frequent mood swings and difficulty managing stress.
+                      
+                      2.Anxiety: A tendency to worry and feel tense in response to challenges.
+                      
+                      3.Irritability: Proneness to frustration and difficulty tolerating discomfort.
+                      
+                      4.Self-Doubt: Persistent feelings of inadequacy and sensitivity to criticism.
+                    </p>
+                  </div>
+                </div>
+            </div>
+            <!-- 添加分页指示器 -->
+            <div class="swiper-pagination"></div>
+            <!-- 添加导航按钮 -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+        <div class="block"></div>
+        <!-- 第一个介绍 -->
+        <div class="QuestionContainer">
+            <h1  class="QuestionTitle">What is the Big Five?</h1>
+            <div class="SpanContainer">
+                <span class="QuestionSpan" onclick="OpenMenu1(this)">+</span>
+            </div>
+            <div class="content content1">
+              <h2>What is the Big Five Personality Test?</h2>
+              <p>
+                The Big Five Personality Test is a scientifically validated assessment that measures five key dimensions of human personality:
+                <strong>Openness</strong>, <strong>Conscientiousness</strong>, <strong>Extraversion</strong>, <strong>Agreeableness</strong>, and <strong>Neuroticism</strong>.
+                Known as the <strong>OCEAN model</strong>, it helps to understand individual differences in behavior, thought patterns, and emotional responses.
+              </p>
+            
+              <h3>Key Personality Dimensions</h3>
+              <div class="traits-container">
+                <div class="trait">
+                  <h4>Openness</h4>
+                  <p>Reflects creativity, curiosity, and a preference for new experiences and ideas.</p>
+                </div>
+                <div class="trait">
+                  <h4>Conscientiousness</h4>
+                  <p>Represents organization, reliability, and attention to detail.</p>
+                </div>
+                <div class="trait">
+                  <h4>Extraversion</h4>
+                  <p>Indicates sociability, energy levels, and a desire for social interaction.</p>
+                </div>
+                <div class="trait">
+                  <h4>Agreeableness</h4>
+                  <p>Captures kindness, empathy, and the ability to cooperate with others.</p>
+                </div>
+                <div class="trait">
+                  <h4>Neuroticism</h4>
+                  <p>Measures emotional stability and sensitivity to stress.</p>
+                </div>
+              </div>
+            
+              <h3>How Does It Work?</h3>
+              <p>
+                Participants answer a series of questions designed to assess their behaviors, preferences, and emotional responses.
+                The test provides scores across the five dimensions, offering insights into:
+              </p>
+              <ul>
+                <li>Strengths and areas for growth</li>
+                <li>Behavioral tendencies and thought patterns</li>
+                <li>Interpersonal relationships and emotional responses</li>
+              </ul>
+            
+              <h3>Why Take the Big Five Test?</h3>
+              <p>
+                The test is widely used in psychology, career development, and personal growth. It offers a reliable, research-backed way to understand your personality and how it influences your life.
+              </p>
+              </div>
+            </div>
+              
+        <!-- 第二个介绍 -->
+        <div class="QuestionContainer">
+            <h1  class="QuestionTitle">What's the difference between the two tests?</h1>
+            <div class="SpanContainer">
+                <span class="QuestionSpan" onclick="OpenMenu2(this)">+</span>
+            </div>
+            <div class="content content2">
+              <p><strong>Standard Test:</strong></p>
+              <ul>
+                  <li>Includes a comprehensive set of questions for detailed and accurate personality analysis.</li>
+                  <li>Ideal for users who want an in-depth understanding of their personality traits.</li>
+                  <li>Longer test duration with more questions.</li>
+                  <li>Provides a detailed result report, including scores and explanations for all dimensions.</li>
+              </ul>
+              <p><strong>Quick Test:</strong></p>
+              <ul>
+                  <li>Features a simplified question set for a quick overview of major personality traits.</li>
+                  <li>Suitable for users with limited time or those looking for a general understanding.</li>
+                  <li>Shorter test duration with fewer questions.</li>
+                  <li>Provides a basic result report highlighting core personality dimensions.</li>
+              </ul>
+            </div>
+        </div>
+        <div class="QuestionContainer">
+          <h1 class="QuestionTitle">Why Choose Us?</h1>
+          <div class="SpanContainer">
+              <span class="QuestionSpan" onclick="OpenMenu3(this)">+</span>
+          </div>
+          <div class="content content3">
+              <p><strong>✔ Free & No Registration Required</strong></p>
+              <ul>
+                  <li>Take the personality test instantly without creating an account.</li>
+                  <li>Enjoy a 100% free experience with no hidden fees.</li>
+              </ul>
+              
+              <p><strong>✔ Scientifically Backed & Accurate</strong></p>
+              <ul>
+                  <li>Based on the widely recognized Big Five personality model.</li>
+                  <li>Uses well-researched psychological metrics for reliable results.</li>
+              </ul>
+              
+              <p><strong>✔ Privacy-Focused & Secure</strong></p>
+              <ul>
+                  <li>We don’t collect personal data—your results remain private.</li>
+                  <li>No third-party tracking or intrusive advertisements.</li>
+              </ul>
+              
+              <p><strong>✔ Quick or In-Depth Testing</strong></p>
+              <ul>
+                  <li>Choose between a short test for a quick overview or a detailed analysis.</li>
+                  <li>Personalized insights into your key personality traits.</li>
+              </ul>
+          </div>
+      </div>
+      
+        <div class="loading-overlay">
+          <div class="spinner"></div>
+        </div>
+        <footer class="footer">
+          <a class="show"  onclick="window.location.replace('contact.html')">About Us</a>
+          <a class="show"  onclick="window.location.replace('privacy.html')">Privacy Policy</a>
+  
+          
+      </footer>
+      
+        <script  type="module" src="Welcome.js"></script>
+
+    </body>
+
+
+</html>

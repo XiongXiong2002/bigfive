@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Big Five Personality Test - Admin</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="admin-Manage.css"> 
+    <script src="https://unpkg.com/vue@3.2.0"></script>
+</head>
+<body>
+
+    <!-- Vue 挂载点 -->
+    <div class="app">
+        <div id="title" class="titleDesign">
+            <img src="../img/MainLogo.png" alt="logo" class="img1">
+            <div class="buttonContainer">
+                <button class="backToMain" @click="backToMain">Back to Main</button>
+            </div>
+        </div>
+        <h2 class="section-title">Management</h2>
+
+        <!-- 题目管理表格（可滚动） -->
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>content</th>
+                        <th>category</th>
+                        <th>subcategory</th>
+                        <th>operation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="(question, index) in questions" :key="index">
+                        <td>{{ index + 1 }}</td>
+                        <td>{{ question.content }}</td>
+                        <td>{{ question.category }}</td>
+                        <td>{{ question.subcategory }}</td>
+                        <td>
+                            <button class="delete-btn" @click="deleteByIndex(index)">delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ✅ 添加新题目 -->
+        <div class="add-section">
+            <h2>add new question</h2>
+
+            <!-- ✅ 手动输入 JSON -->
+            <textarea v-model="newQuestionsJson" placeholder='Enter JSON manually or upload a file.  
+            Format: [{"content": "Question text", "category": "Big Five Trait", "subcategory": "Corresponding Subtrait"}]  
+            Supported categories and subcategories:  
+            - "Openness": ["Imagination", "Artistic Interests", "Emotionality", "Adventurousness", "Intellect", "Liberalism"]  
+            - "Conscientiousness": ["Self-Efficacy", "Orderliness", "Dutifulness", "Achievement-Striving", "Self-Discipline", "Cautiousness"]  
+            - "Extraversion": ["Friendliness", "Gregariousness", "Assertiveness", "Activity Level", "Excitement-Seeking", "Cheerfulness"]  
+            - "Agreeableness": ["Trust", "Morality", "Altruism", "Cooperation", "Modesty", "Sympathy"]  
+            - "Neuroticism": ["Anxiety", "Anger", "Depression", "Self-Consciousness", "Immoderation", "Vulnerability"]  
+            ' rows="15"></textarea>
+
+
+            <input type="file" accept=".json"  @change="handleFileUpload"  class="file-input">
+
+            <div >
+                <button class="back"@click="handleTextInput" >add</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="admin-Manage.js"></script>
+</body>
+</html>

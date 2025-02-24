@@ -1,0 +1,244 @@
+/* 全局样式 */
+body {
+   
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-image: url("../img/bg.png");
+    background-size: cover;
+}
+
+/* 标题样式 */
+.titleDesign {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 60px;
+    z-index: 1000;
+    background-color: #1E3A5F;
+    align-items: center;
+    margin-bottom: 20px;
+    box-shadow: 0px 4px 10px white; /* 半透明白色阴影 */
+}
+
+.img1 {
+    margin-left: 10%;
+    width: 200px; /* 固定宽度 */
+    height: auto; /* 高度自适应 */
+}
+
+.buttonContainer {
+    position: absolute;
+    left: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 40%;
+    gap: 10%; /* 按钮之间的间距 */
+}
+
+/* 按钮样式 */
+.standardTest, .quickTest ,.backToMain{
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    font-size: clamp(12px, 1.5vw, 16px);
+    background-color: transparent;
+    border-radius: 30px;
+    color: white;
+    border: none;
+    cursor: pointer;
+   
+    transition: all 0.3s;
+}
+.standardTest:hover, .quickTest:hover,.backToMain:hover {
+    color: #007bff;
+}
+
+/* 轮播容器 */
+.swiper-container {
+    position: relative;
+    width: 100%; /* 调整为百分比宽度 */
+    margin-top: 4%;
+    height: 75%;
+    background-color: black;
+    overflow: hidden;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+/* 文本容器 */
+.textContainer {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 100px;
+    width: 90%;
+    height: auto;
+    text-align: left;
+    -ms-overflow-style: none; /* 隐藏 IE/Edge 的滚动条 */
+    scrollbar-width: none; /* 隐藏 Firefox 的滚动条 */
+
+}
+
+.textContainer::-webkit-scrollbar {
+    display: none; /* 隐藏 WebKit 浏览器的滚动条 */
+}
+
+/* 轮播幻灯片 */
+.swiper-slide {
+    color: #fff;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.Introduce {
+    width: 90%;
+    max-width: 600px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+.introduceText {
+    width: 90%;
+    margin: 0 auto;
+    white-space: pre-line;
+    color: white;
+    font-size: clamp(14px, 2vw, 18px);
+}
+
+/* 分页指示器 */
+.swiper-pagination-bullet {
+    background-color: #ccc;
+}
+
+.swiper-pagination-bullet-active {
+    background-color: #007bff;
+}
+
+/* 问题容器 */
+.QuestionContainer {
+    display: flex;
+    flex-wrap: wrap;/*在z允许子元素换行*/
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    background: rgba(30, 60, 100, 0.7);
+    padding: 15px;    
+    border-radius: 20px;
+    margin-bottom: 20px;
+    color: white;
+    padding: 0;
+
+}
+
+.QuestionTitle {
+    flex: 0 0 80%;
+    color: white;
+    text-align: center;
+    font-size: clamp(18px, 2.5vw, 24px);
+}
+
+.SpanContainer {
+    flex: 0 0 20%;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.QuestionSpan {
+    color: white;
+    cursor: pointer;
+    font-size: 50px;
+    font-weight: 100;
+    transition: all 0.3s;
+}
+
+.QuestionSpan:hover {
+    color: #007bff;
+}
+
+/* 内容区域 */
+.content {
+    max-height: 0;
+    overflow: hidden;
+    flex: 0 0 100%;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+/* 加载遮罩 */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+}
+
+.loading-overlay.show {
+    visibility: visible;
+}
+
+/* 加载动画 */
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(255, 255, 255, 0.3);
+    border-top: 5px solid #ffffff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.footer {
+    position: relative;
+    width: 100%;
+    background-color: #1E3A5F;
+    color: white;
+    padding: 15px 0;
+    text-align: center;
+    bottom: 0;
+}
+
+.footer a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 14px;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+.show{
+    cursor: pointer;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}

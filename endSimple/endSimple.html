@@ -1,0 +1,40 @@
+<html lang="en">
+    <head>
+        <title>Big Five personality test</title>
+        <meta charset="UTF-8">  <!-- 浏览器支持的编码格式 -->
+        <meta name="viewport" content="width = device-width, initial-scale = 1.0" >
+        <link rel="stylesheet" href="endSimple.css"> 
+        <script src="https://unpkg.com/vue@3.2.0" ></script>
+    </head>
+    <body>
+        <!-- 标题部分 -->
+        <div id="title" class="titleDesign" >
+            <img src="../img/MainLogo.png" alt="logo" class="img1">
+        </div>
+        <!-- 分割线 -->
+        <div class="divider"></div>
+        <h1 class="resultTitle">Personality Result</h1>
+        <div class="resultContainer">
+            <div class="scoreContainer"  v-for="(record, index) in result" :key="index">
+                <p class="personality">{{record.personality}} : {{record.score}}/25</p>
+                <p class="percent">{{ Math.floor(record.score / total * 100) }}%</p>
+                <div class="resultBar">
+                    <div class="insideBar":style="{width: ((record.score)  / total * 100) + '%'}" ></div>
+                </div>
+                <p class="comment"> {{comment[index].comment}} </p>
+            </div>
+        </div>
+        
+
+
+        </div>
+
+
+
+
+
+
+        <script src="endSimple.js"></script>
+    </body>
+
+</html>
