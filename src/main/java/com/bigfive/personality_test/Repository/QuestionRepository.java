@@ -1,6 +1,7 @@
 package com.bigfive.personality_test.Repository;
 
 import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -34,7 +35,7 @@ public interface QuestionRepository extends JpaRepository<Question, Long> {
     List<Question> findQuestionsByCategory(@Param("category") String category, @Param("limit") int limit);
 
     // 查询简单测试结果
-    @Query(value = "SELECT * FROM personalitycomments WHERE category = :category AND level = :level LIMIT 1", nativeQuery = true)
+    @Query(value = "SELECT * FROM Personalitycomments WHERE category = :category AND level = :level LIMIT 1", nativeQuery = true)
     PersonalityComments findSimpleResult(@Param("category") String category, @Param("level") String level);
 
     // 查询子类别的问题
