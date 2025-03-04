@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-
 import com.bigfive.personality_test.DTO.PersonalityScore;
 import com.bigfive.personality_test.DTO.SimpleResult;
 import com.bigfive.personality_test.Repository.QuestionRepository;
@@ -30,6 +29,15 @@ public class QuestionService {
         put("agreeableness", new String[]{"trust", "morality", "altruism", "cooperation", "modesty", "sympathy"});
         put("neuroticism", new String[]{"anxiety", "anger", "depression", "self_consciousness", "vulnerability", "stress_tolerance"});
     }};
+    private double[][] personalityScores = {
+        {0.7476216255727797, 0.7556018347198779, 0.7628612675831151, 0.7937324397297271, 0.4380880720365121},
+        {0.6602680364501684, 0.6220525277148955, 0.6495487840269348, 0.7380315166289355, 0.528159208311569},
+        {0.6498038129794051, 0.5573961615582901, 0.7145769120595795, 0.5968928355453691, 0.7394003628377718},
+        {0.7641006212141271, 0.6351023013662322, 0.7629534199938118, 0.7336787040721542, 0.6307227970110995},
+        {0.6468980278006887, 0.7513279267780151, 0.7650858978150712, 0.6215318919311484, 0.5831776224647046}
+    };
+    
+    
     
 
 
@@ -74,20 +82,38 @@ public class QuestionService {
         if (score == null || score.isEmpty()) {
             return null;
         }
-
-
+ 
+        List<Integer> scores = new ArrayList<Integer>();
         List <SimpleResult> results = new ArrayList<>();
 
         // 遍历列表，计算每个 PersonalityScore 的总分，并找出给予评价
         for (PersonalityScore personalityScore : score) {
             if (personalityScore == null) continue;
             int totalScore = personalityScore.calculateTotalScore();
-             
-            //获得当前level 
+            scores.add(totalScore);
             String level = getLevel(totalScore);
-
             results.add(new SimpleResult(personalityScore.getPersonality(), questionRepository.findSimpleResult(personalityScore.getPersonality(), level).getComment()));
-       
+           
+        }
+        int bestCluster = -1;
+        double minDistance = Double.MAX_VALUE;
+        
+        for (int i = 0; i < 5; i++) { // 遍历5个聚类中心
+            double distance = 0;
+            for (int j = 0; j < scores.size(); j++) {
+                distance += Math.pow(scores.get(j) - personalityScores[i][j], 2);
+            }
+            distance = Math.sqrt(distance); // 计算欧几里得距离
+        
+            if (distance < minDistance) { // 找到最接近的类别
+                minDistance = distance;
+                bestCluster = i;
+            }
+        }
+        
+        // 如果成功找到最佳类别，添加结果
+        if (bestCluster != -1) {
+            results.add(new SimpleResult("Summary", questionRepository.findClusterComment(bestCluster)));
         }
 
         return results;

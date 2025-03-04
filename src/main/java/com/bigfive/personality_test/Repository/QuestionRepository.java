@@ -38,6 +38,9 @@ public interface QuestionRepository extends JpaRepository<Question, Long> {
     @Query(value = "SELECT * FROM PersonalityComments WHERE category = :category AND level = :level LIMIT 1", nativeQuery = true)
     PersonalityComments findSimpleResult(@Param("category") String category, @Param("level") String level);
 
+    @Query(value = "SELECT * FROM Personality_Evaluation WHERE id = :id  LIMIT 1", nativeQuery = true)
+    String findClusterComment(@Param("id") int id);
+
     // 查询子类别的问题
     @Query(value = "SELECT * FROM questions WHERE category = :category AND subCategory = :subCategory ORDER BY RAND() LIMIT 4", nativeQuery = true)
     List<Question> findQuestionsBySubCategory(@Param("category") String category, @Param("subCategory") String subCategory);
