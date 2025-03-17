@@ -50,15 +50,24 @@
             <h2>add new question</h2>
 
             <!-- ✅ 手动输入 JSON -->
-            <textarea v-model="newQuestionsJson" placeholder='Enter JSON manually or upload a file.  
-            Format: [{"content": "Question text", "category": "Big Five Trait", "subcategory": "Corresponding Subtrait"}]  
-            Supported categories and subcategories:  
-            - "Openness": ["Imagination", "Artistic Interests", "Emotionality", "Adventurousness", "Intellect", "Liberalism"]  
-            - "Conscientiousness": ["Self-Efficacy", "Orderliness", "Dutifulness", "Achievement-Striving", "Self-Discipline", "Cautiousness"]  
-            - "Extraversion": ["Friendliness", "Gregariousness", "Assertiveness", "Activity Level", "Excitement-Seeking", "Cheerfulness"]  
-            - "Agreeableness": ["Trust", "Morality", "Altruism", "Cooperation", "Modesty", "Sympathy"]  
-            - "Neuroticism": ["Anxiety", "Anger", "Depression", "Self-Consciousness", "Immoderation", "Vulnerability"]  
-            ' rows="15"></textarea>
+            <textarea v-model="newQuestionsJson" placeholder='Enter JSON manually or upload a file.
+            __________________________________________________________________________
+            
+            Format: [{"content": "Question text", "category": "big_five_trait", "subcategory": "corresponding_subtrait"}]
+            
+            Important!
+            
+            Supported categories and subcategories:
+            __________________________________________________________________________
+            
+            - **openness**: ["imagination", "artistic_interests", "emotional_depth", "adventurousness", "intellectual_curiosity", "openness_to_values"]
+            - **conscientiousness**: ["self_discipline", "orderliness", "responsibility", "achievement_striving", "cautiousness", "time_management", "attention_to_detail"]
+            - **extraversion**: ["sociability", "assertiveness", "energy_level", "adventurousness", "optimism"]
+            - **agreeableness**: ["trust", "morality", "altruism", "cooperation", "modesty", "sympathy"]
+            - **neuroticism**: ["anxiety", "anger", "depression", "self_consciousness", "vulnerability", "stress_tolerance"]
+            __________________________________________________________________________
+            
+' rows="15"></textarea>
 
 
             <input type="file" accept=".json"  @change="handleFileUpload"  class="file-input">
@@ -69,6 +78,6 @@
         </div>
     </div>
 
-    <script type="module" src="admin-Manage.js"></script>
+    <script type="module" src="admin-Manage001.js"></script>
 </body>
 </html>

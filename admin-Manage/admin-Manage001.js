@@ -28,6 +28,7 @@ const infoPresent = Vue.createApp({
         try {
             this.questions = await getAll(this.userInfo);
             console.log("Questions loaded:", this.questions);
+            console.log("完成拉");
         } catch (error) {
             console.error("Error loading questions:", error);
         }
@@ -79,37 +80,67 @@ const infoPresent = Vue.createApp({
         },
 
         async handleTextInput() {
-            if (this.newQuestionsJson === "" && this.currentAdding.length === 0) {
+            if (this.newQuestionsJson.trim() === "" && this.currentAdding.length === 0) {
                 alert("Input can't be empty");
-                location.reload();
                 return;
             }
-
+        
             let currentinput = [];
             if (this.newQuestionsJson) {
                 try {
                     currentinput = JSON.parse(this.newQuestionsJson);
+                    
+                    if (!Array.isArray(currentinput)) {
+                        alert("Invalid input format, expected an array.");
+                        this.currentAdding =[];
+                    this.newQuestionsJson = "";
+                        return;
+                    }
+        
+                    // **获取所有已存在的 question content**
+                    const existingContents = new Set(this.questions.map(q => q.content));
+        
+                    // **过滤掉重复的内容**
+                    currentinput = currentinput.filter(q => !existingContents.has(q.content));
+        
+                    if (currentinput.length === 0) {
+                        alert("All input questions already exist.");
+                                            this.currentAdding =[];
+                    this.newQuestionsJson = "";
+                        return;
+                    }
+        
                 } catch (error) {
                     alert("Invalid input format.");
+                                        this.currentAdding =[];
                     this.newQuestionsJson = "";
                     return;
                 }
             }
-
-            this.currentAdding = [...this.currentAdding, ...currentinput];
-            for (let js of this.currentAdding) {
+        
+            // **合并 `currentAdding` 和 `currentinput`，同时去重**
+            const mergedQuestions = [...this.currentAdding, ...currentinput];
+        
+            // **检查格式是否正确**
+            for (let js of mergedQuestions) {
                 if (!js.content || !js.category || !js.subcategory || Object.keys(js).length !== 3) {
                     alert("Invalid input format.");
+                                        this.currentAdding =[];
                     this.newQuestionsJson = "";
                     return;
                 }
             }
-
-            this.userInfo.question = this.currentAdding;
+        
+            // **更新 `currentAdding`，提交后清空 `newQuestionsJson`**
+     
+            this.userInfo.question = mergedQuestions;
+        
             const response2 = await addElement(this.userInfo);
             if (response2.error || !response2) {
                 alert("Add question failed, please try again.");
-                this.newQuestionsJson = "";
+                console.log(this.currentAdding);
+                    this.currentAdding =[];
+                    this.newQuestionsJson = "";
             } else {
                 try {
                     let response3 = await getAll(this.userInfo);
@@ -118,13 +149,18 @@ const infoPresent = Vue.createApp({
                         return;
                     }
                     this.questions = response3;
+        
+                    this.currentAdding =[];
+                    console.log("完成拉");
+                    this.newQuestionsJson = "";
                 } catch (error) {
                     console.error("Error loading questions:", error);
                     alert("Error loading questions: " + error);
                 }
             }
+            this.currentAdding =[];
+                    this.newQuestionsJson = "";
         },
-
         async deleteByIndex(index) {
             var commit ={
                 id:this.questions[index].id,
@@ -157,12 +193,14 @@ const infoPresent = Vue.createApp({
                 console.log(error);
                 alert("Fail to delete, please check server.");
             }
-        },
+        }
+        
+        ,
         backToMain(){
             window.removeEventListener("mousemove", this.resetLogoutTimer);
             window.removeEventListener("keydown", this.resetLogoutTimer);
             window.removeEventListener("click", this.resetLogoutTimer);
-            window.location.replace("../welcomePage/welcome.html")
+            window.location.replace("../Welcome.html")
         }
 
     }
